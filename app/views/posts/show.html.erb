@@ -5,3 +5,22 @@
 <%= link_to 'Back', posts_path %> |
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+
+<h2>Comments</h2>
+<%= render @post.comments %>
+
+<h2>Add a comment:</h2>
+<%= form_for([@post, @post.comments.build]) do |f| %>
+  <p>
+    <%= f.label :author %><br>
+    <%= f.text_field :author %>
+  </p>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
